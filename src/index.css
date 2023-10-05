@@ -44,20 +44,3 @@ a{
 a:hover {
   color: #747bff;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  a {
-    color: #000;
-    transition: all 0.3s;
-  }
-  button {
-    background-color: #d5d2d8;
-  }
-}

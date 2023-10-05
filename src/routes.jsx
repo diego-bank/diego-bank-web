@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Error from './pages/Error'
 
 import Header from './templates/Header';
+import Footer from './templates/Footer';
 
 function RouterApp() {
     return(
@@ -14,6 +15,7 @@ function RouterApp() {
 
                 <Route path='*' element={ <Error /> } />
             </Routes>
+            <Footer />
         </BrowserRouter>
     )
 }

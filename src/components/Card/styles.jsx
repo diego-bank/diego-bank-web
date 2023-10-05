@@ -18,6 +18,6 @@ export const StyledTitle = styled.h1`
 `;
 
 export const StyledText = styled.p`
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
 `;

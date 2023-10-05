@@ -1,10 +1,11 @@
-import { StyledContainer, StyledTitle } from "./styles";
+import { StyledContainer, StyledTitle,StyledText } from "./styles";
 
-function Card({ title, text }) {
+function Card({ title, text, children}) {
     return(
         <StyledContainer>
+            {children}
             <StyledTitle>{title}</StyledTitle>
-            <p>{text}</p>
+            <StyledText>{text}</StyledText>
         </StyledContainer>
     )
 }

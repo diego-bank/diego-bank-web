@@ -6,7 +6,7 @@ function Error(){
         <StyledErro>
             <StyledTitle>404</StyledTitle>
             <h2>Página não encontrada!</h2>
-            <StyledLink to="/">Veja todos os filmes!</StyledLink>
+            <StyledLink to="/">Volte ao menu inicial!</StyledLink>
         </StyledErro>
     )
 }
