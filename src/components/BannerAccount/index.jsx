@@ -1,12 +1,10 @@
 import Button from "../Button";
 import { StyledBanner, StyledContainer, StyledImage, StyledTitle } from "./styles";
 
-import cell from '../../assets/cell.png'
-
-function BannerAccount() {
+function BannerAccount({ img }) {
     return(
         <StyledBanner>
-            <StyledImage src={cell}/>
+            <StyledImage src={img}/>
             <StyledContainer>
                 <StyledTitle>Create Your Account</StyledTitle>
                 <Button text={'Create Account'} link={'/signup'}/>

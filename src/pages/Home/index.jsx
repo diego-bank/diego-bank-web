@@ -8,6 +8,8 @@ import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import BannerAccount from "../../components/BannerAccount";
 
+import cell from '../../assets/cell.svg'
+
 function Home() {
     return(
         <StyledContainer>
@@ -18,14 +20,14 @@ function Home() {
                         <SecurityIcon fontSize="large"/>
                     </Card>
                     <Card title={'Anywhere Any Time'} text={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}>
-                        <MoreTimeIcon fontSize="large" />
+                        <MoreTimeIcon fontSize="large"/>
                     </Card>
                     <Card title={'Certification'} text={'Certified by the ANCD (National Association for Digital Certification). Currently one of the safest and most affordable tools.'}>
                         <WorkspacePremiumIcon fontSize="large"/>
                     </Card>
                 </>
             </Posts>
-            <BannerAccount />
+            <BannerAccount img={cell} />
         </StyledContainer>
     )
 }

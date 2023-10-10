@@ -7,20 +7,20 @@ export const StyledFooter = styled.footer`
     justify-content: space-between;
     height: 400px;
     background-color: #000000;
+    gap: 20px;
+    width: 100%;
 `;
 
 export const StyledInfos = styled.div`
     display: flex;
+    flex-direction: column;
+    @media (max-width: 950px) {
+        display: flex;
         flex-direction: column;
-`;
-
-export const StyledLogo = styled(Link)`
-    text-decoration: none;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.87);
-    font-size: 30px;
-    font-weight: bold;
-    height: 80px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 `;
 
 export const StyledLink = styled(Link)`
@@ -62,10 +62,17 @@ export const StyledDiv = styled.div`
         text-decoration: none;
         font-size: large;
     }
+    @media (max-width: 950px) {
+        text-align: center;
+        margin-left: 0;
+    }
 `;
 
 export const StyledText = styled.p`
     font-size: 15px;
+    @media (max-width: 950px) {
+        text-align: center;
+    }
 `;
 
 export const StyledDownloads = styled.div`
@@ -75,6 +82,9 @@ export const StyledDownloads = styled.div`
     width: 550px;
     flex-direction: row;
     gap: 60px;
+    @media (max-width: 950px) {
+        display: none;
+    }
 `;
 
 export const StyledTitle = styled.h1`

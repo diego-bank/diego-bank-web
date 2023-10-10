@@ -15,15 +15,28 @@ export const StyledContainer = styled.div`
     min-height: 400px;
     width: 100%;
     padding-top: 100px;
+    @media (max-width: 950px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
 `;
 
 export const StyledTitle = styled.h1`
     font-size: 40px;
     width: 450px;
-    margin-left: 20%;
+    @media (max-width: 950px) {
+        text-align: center;
+        width: 100%;
+    }
 `;
 
 
 export const StyledImage = styled.img`
-    scale: 1.2;
+    width: 500px;
+    @media (max-width: 950px) {
+        display: none;
+    }
 `;

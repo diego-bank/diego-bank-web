@@ -7,7 +7,6 @@ export const StyledButton = styled.button`
     color: aliceblue;
     padding: 10px;
     border-radius: 15px;
-    margin-left: 20%;
     border: none;
     cursor: pointer;
     text-decoration: none;
