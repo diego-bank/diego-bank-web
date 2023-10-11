@@ -21,7 +21,7 @@ function About() {
                 </>
             </Posts>
             <StyledText>
-                This is a Example
+            The virtual bank project, at the forefront of modern financial technology, demonstrates a remarkable fusion of React and React Native for the user interface, complemented by the robust Django Rest Framework for the backend. This initiative aspires to establish an intuitive, secure, and efficient digital banking experience, holding the potential to bring about a significant paradigm shift in the digital banking sector. As this project continues to develop, it promises to provide users with a transformative and user-centric digital banking solution.
             </StyledText>
         </StyledMain>
     )

@@ -7,7 +7,7 @@ export const StyledMain = styled.main`
 `;
 
 export const StyledText = styled.h1`
-    text-align: center;
-    font-size: 36;
-    padding: 150px 200px;
+    text-align: justify;
+    font-size: 30;
+    padding: 70px 200px 70px 200px;
 `;
