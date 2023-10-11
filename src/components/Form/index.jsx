@@ -1,13 +1,12 @@
 import Button from "../Button";
-import { StyledContainer, StyledTitle } from "./styles";
+import { StyledForm } from "./styles";
 
-function Banner() {
+function Form({ children }) {
     return(
         <StyledContainer>
-            <StyledTitle>Free account, 100% digital and with unlimited services</StyledTitle>
-            <Button text={'Download'} link={'/download'}/>
+            {children}
         </StyledContainer>
     )
 }
 
-export default Banner;
+export default Form;
