@@ -1,11 +1,11 @@
 import Button from "../Button";
 import { StyledForm } from "./styles";
 
-function Form({ children }) {
+function Form({ children, method, onSubmit }) {
     return(
-        <StyledContainer>
+        <StyledForm method={method} onSubmit={onSubmit}>
             {children}
-        </StyledContainer>
+        </StyledForm>
     )
 }
 
