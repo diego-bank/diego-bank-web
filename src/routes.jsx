@@ -8,19 +8,35 @@ import Footer from './templates/Footer';
 import About from './pages/About';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp'
+import Logout from './pages/Logout'
+import Profile from './pages/Profile'
+import { useAuthStore } from './stores/authStore';
 
 function RouterApp() {
+    const auth = useAuthStore(state => state.accessToken);
+
     return(
         <BrowserRouter>
             <Header />
-            <Routes>
-                <Route path='/' element={ <Home /> } />
-                <Route path='/about' element={ <About /> } />
-                <Route path='/login' element={ <Login />} />
-                <Route path='/signup' element={ <SignUp />} />
+            {auth ? (
+                <Routes>
+                    <Route path='/' element={ <Home /> } />
+                    <Route path='/about' element={ <About /> } />
+                    <Route path='/logout' element={ <Logout />} />
+                    <Route path='/profile' element={ <Profile />} />
 
-                <Route path='*' element={ <Error /> } />
-            </Routes>
+                    <Route path='*' element={ <Error /> } />
+                </Routes>
+            ) : (
+                <Routes>
+                    <Route path='/' element={ <Home /> } />
+                    <Route path='/about' element={ <About /> } />
+                    <Route path='/login' element={ <Login />} />
+                    <Route path='/signup' element={ <SignUp />} />
+
+                    <Route path='*' element={ <Error /> } />
+                </Routes>
+            )}
             <Footer />
         </BrowserRouter>
     )

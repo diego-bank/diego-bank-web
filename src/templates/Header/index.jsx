@@ -1,6 +1,8 @@
 import { StyledMenuMobile, StyledHeader, StyledLogo, StyledUl, StyledImage, StyledLi, StyledLink } from './styles';
 import { slide as Menu } from 'react-burger-menu';
 
+import { useAuthStore } from '../../stores/authStore'
+
 import logo from '../../assets/logo.png'
 
 var styles = {
@@ -50,32 +52,71 @@ var styles = {
   }
 
 function Header(){
+    const auth = useAuthStore(state => state.accessToken);
+
     return(
-        <StyledHeader>
-            <StyledLogo to={'/'}><StyledImage src={logo} /></StyledLogo>
-            <StyledUl>
-                <StyledLi>
-                    <StyledLink to={'/'}>Home</StyledLink>
-                </StyledLi>
-                <StyledLi>
-                    <StyledLink to={'/about'}>About</StyledLink>
-                </StyledLi>
-                <StyledLi>
-                    <StyledLink to={'/'}>Download</StyledLink>
-                </StyledLi>
-                <StyledLi>
-                    <StyledLink to={'/login'}>Login</StyledLink>
-                </StyledLi>
-            </StyledUl>
-            <StyledMenuMobile>
-              <Menu className='menu-mobile' styles={styles} right={true}>
+      <>
+          {
+           auth ? 
+            (
+              <StyledHeader>
+                <StyledLogo to={'/'}><StyledImage src={logo} /></StyledLogo>
+                <StyledUl>
+                    <StyledLi>
+                        <StyledLink to={'/'}>Home</StyledLink>
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledLink to={'/about'}>About</StyledLink>
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledLink to={'/'}>Download</StyledLink>
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledLink to={'/logout'}>Logout</StyledLink>
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledLink to={'/profile'}>Profile</StyledLink>
+                    </StyledLi>
+                </StyledUl>
+                <StyledMenuMobile>
+                  <Menu className='menu-mobile' styles={styles} right={true}>
+                          <StyledLink to={'/'}>Home</StyledLink>
+                          <StyledLink to={'/about'}>About</StyledLink>
+                          <StyledLink to={'/'}>Download</StyledLink>
+                          <StyledLink to={'/logout'}>Logout</StyledLink>
+                          <StyledLink to={'/profile'}>Profile</StyledLink>
+                  </Menu>
+                </StyledMenuMobile>
+              </StyledHeader>
+            ) : (
+              <StyledHeader>
+              <StyledLogo to={'/'}><StyledImage src={logo} /></StyledLogo>
+              <StyledUl>
+                  <StyledLi>
                       <StyledLink to={'/'}>Home</StyledLink>
+                  </StyledLi>
+                  <StyledLi>
                       <StyledLink to={'/about'}>About</StyledLink>
+                  </StyledLi>
+                  <StyledLi>
                       <StyledLink to={'/'}>Download</StyledLink>
+                  </StyledLi>
+                  <StyledLi>
                       <StyledLink to={'/login'}>Login</StyledLink>
-              </Menu>
-            </StyledMenuMobile>
-        </StyledHeader>
+                  </StyledLi>
+              </StyledUl>
+              <StyledMenuMobile>
+                <Menu className='menu-mobile' styles={styles} right={true}>
+                        <StyledLink to={'/'}>Home</StyledLink>
+                        <StyledLink to={'/about'}>About</StyledLink>
+                        <StyledLink to={'/'}>Download</StyledLink>
+                        <StyledLink to={'/login'}>Login</StyledLink>
+                </Menu>
+              </StyledMenuMobile>
+              </StyledHeader>
+            )
+          }
+          </>
     )
 }
 

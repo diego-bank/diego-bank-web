@@ -5,43 +5,67 @@ import { useState, useEffect } from 'react';
 import Input from '../../components/Input'
 import Form from '../../components/Form';
 import Button from '../../components/Button';
-import Dropdown from '../../components/Dropdown';
+
+import { api } from '../../services/api';
+import { toast } from 'react-toastify';
+
+import { useAuthStore } from '../../stores/authStore'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const setAccessToken = useAuthStore(state => state.setAccessToken);
+    const setRefreshToken = useAuthStore(state => state.setRefreshToken);
 
-    const [tipoPessoa, setTipoPessoa] = useState(1)
+    const navigate = useNavigate();
+
+    async function login(e) {
+            await api.post('api/token/', {
+                'email': e.target.email.value,
+                'password': e.target.password.value
+            })
+            .then((response) => {
+                const accessToken = response.data.access;
+                const refreshToken = response.data.refresh;
+
+                setAccessToken(accessToken);
+                setRefreshToken(refreshToken);
+
+                console.log(accessToken, refreshToken);
+            })
+            .then(() => {
+                navigate('/profile', { replace: true })
+            })
+            .catch((e) => {
+                console.log(e)
+                toast.error('Invalid Credentials ', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
+            }) 
+       
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
-    }
 
-    const handleTipoPessoa = (e) => {
-        setTipoPessoa(e.value)
+        login(e);
     }
-
-    useEffect(() => {
-        
-    }, [tipoPessoa])
 
     return(
         <StyledMain>
-            <StyledContainer>
-                <Dropdown handleChange={handleTipoPessoa} options={[{value: 1, label: 'Pessoa Física'}, {value: 0, label: 'Pessoa Jurídica'}]} />
-            </StyledContainer>
-            {tipoPessoa ? (
+            {(
                 <Form method={'post'} onSubmit={handleLogin}>
-                    <Input name={'cpf'} label={'CPF'} type={'text'} />
+                    <Input name={'email'} label={'Email'} type={'text'} />
                     <Input name={'password'} label={'Password'} type={'password'} />
-                    <Button type={'submit'} text={'Login'}/>
-                </Form>
-            ) : (
-                <Form method={'post'} onSubmit={handleLogin}>
-                    <Input name={'cnpj'} label={'CNPJ'} type={'text'} />
-                    <Input name={'password'} label={'Password'} type={'password'} />
-                    <Button type={'submit'} text={'Login'}/>
+                    <Button type={'submit'} text={'Login'} />
                 </Form>
             )}
-            
         </StyledMain>
     )
 }
