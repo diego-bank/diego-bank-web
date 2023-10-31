@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
     height: 80px;
     background-color: #0b0e3b;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     justify-content: space-evenly;
     @media (max-width: 1000px) {
         width: 100%;
@@ -59,6 +59,7 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledMenuMobile = styled.div`
+    
     @media (min-width: 1000px) {
         display: none;
     }

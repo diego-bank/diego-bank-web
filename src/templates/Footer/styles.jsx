@@ -41,7 +41,8 @@ export const StyledLi = styled.li`
 `;
 
 export const StyledImage = styled.img`
-    width: 500px;
+    max-width: 500px;
+    min-width: 90vw;
     height: 80px;
     object-fit: cover;
 `;

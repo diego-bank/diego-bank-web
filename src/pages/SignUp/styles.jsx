@@ -16,3 +16,14 @@ export const StyledMain = styled.main`
     justify-content: flex-start;
     flex-direction: column;
 `;
+
+export const StyledTitle = styled.h1`
+    font-size: 40px;
+    width: 450px;
+    text-align: center;
+    margin-bottom: 20px;
+    @media (max-width: 950px) {
+        text-align: center;
+        width: 90%;
+    }
+`;

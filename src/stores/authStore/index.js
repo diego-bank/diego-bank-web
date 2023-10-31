@@ -17,7 +17,6 @@ export const useAuthStore = create(persist((set) => ({
     clearTokens: () =>
         set(state => ({
             accessToken: undefined,
-            accessTokenData: undefined,
             refreshToken: undefined,
         })),
     }),

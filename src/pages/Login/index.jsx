@@ -1,4 +1,4 @@
-import { StyledContainer, StyledMain } from './styles'
+import { StyledContainer, StyledMain, StyledTitle } from './styles'
 
 import { useState, useEffect } from 'react';
 
@@ -59,6 +59,9 @@ function Login() {
 
     return(
         <StyledMain>
+            <StyledTitle>
+                Sign In
+            </StyledTitle>
             {(
                 <Form method={'post'} onSubmit={handleLogin}>
                     <Input name={'email'} label={'Email'} type={'text'} />

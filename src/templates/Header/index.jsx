@@ -104,6 +104,9 @@ function Header(){
                   <StyledLi>
                       <StyledLink to={'/login'}>Login</StyledLink>
                   </StyledLi>
+                  <StyledLi>
+                    <StyledLink to={'/signup'}>Create Account</StyledLink>
+                  </StyledLi>
               </StyledUl>
               <StyledMenuMobile>
                 <Menu className='menu-mobile' styles={styles} right={true}>
@@ -111,6 +114,7 @@ function Header(){
                         <StyledLink to={'/about'}>About</StyledLink>
                         <StyledLink to={'/'}>Download</StyledLink>
                         <StyledLink to={'/login'}>Login</StyledLink>
+                        <StyledLink to={'/signup'}>Create Account</StyledLink>
                 </Menu>
               </StyledMenuMobile>
               </StyledHeader>

@@ -1,4 +1,4 @@
-import { StyledMain, StyledContainer } from './styles'
+import { StyledMain, StyledContainer, StyledTitle } from './styles'
 
 import { useState, useEffect } from 'react';
 
@@ -25,9 +25,12 @@ function SignUp() {
 
     return(
         <StyledMain>
-            <StyledContainer>
+            <StyledTitle>
+                Sign Up
+            </StyledTitle>
+            {/* <StyledContainer>
                 <Dropdown handleChange={handleTipoPessoa} options={[{value: 1, label: 'Pessoa Física'}, {value: 0, label: 'Pessoa Jurídica'}]} />
-            </StyledContainer>
+            </StyledContainer> */}
             {tipoPessoa ? 
             (
                 <Form method={'post'} onSubmit={handleSignUp}>
