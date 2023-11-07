@@ -42,7 +42,7 @@ export const StyledLi = styled.li`
 
 export const StyledImage = styled.img`
     max-width: 500px;
-    min-width: 90vw;
+    min-width: 100px;
     height: 80px;
     object-fit: cover;
 `;

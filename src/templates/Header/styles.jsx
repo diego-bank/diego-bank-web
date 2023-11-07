@@ -53,13 +53,13 @@ export const StyledImage = styled.img`
     height: 80px;
     object-fit: cover;
     @media (max-width: 950px) {
+        margin-left: 30px;
         width: 50%;
         object-fit: cover;
     }
 `;
 
 export const StyledMenuMobile = styled.div`
-    
     @media (min-width: 1000px) {
         display: none;
     }
