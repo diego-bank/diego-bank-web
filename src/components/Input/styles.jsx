@@ -7,7 +7,7 @@ export const StyledInput = styled.input`
     color: #ffffff;
     padding: 10px;
     border-radius: 25px;
-    border: #858BE9 solid 1.5px;
+    border: #7312a0 solid 1.8px;
     cursor: auto;
     text-decoration: none;
     margin-top: 2px;
