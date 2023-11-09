@@ -5,55 +5,93 @@ import { useState, useEffect } from 'react';
 import Input from '../../components/Input'
 import Form from '../../components/Form';
 import Button from '../../components/Button';
-import Dropdown from '../../components/Dropdown';
+
+import { api } from "../../services/api";
+import { toast } from 'react-toastify';
+
+import { useAuthStore } from '../../stores/authStore'
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+    const setAccessToken = useAuthStore(state => state.setAccessToken);
+    const setRefreshToken = useAuthStore(state => state.setRefreshToken);
 
-    const [tipoPessoa, setTipoPessoa] = useState(1)
+    const navigate = useNavigate();
+
+    async function login(e) {
+        await api.post('api/token/', {
+            'email': e.target.email.value,
+            'password': e.target.password.value
+        })
+        .then((response) => {
+            const accessToken = response.data.access;
+            const refreshToken = response.data.refresh;
+
+            setAccessToken(accessToken);
+            setRefreshToken(refreshToken);
+
+            console.log(accessToken, refreshToken);
+        })
+        .then(() => {
+            navigate('/profile', { replace: true })
+        })
+    }
+
+    async function signUp(e) {
+        await api.post('api/v1/user/create/', {
+            "email": e.target.email.value,
+            "password": e.target.password.value,
+            "first_name": e.target.firstName.value,
+            "last_name": e.target.lastName.value,
+            "cpf": e.target.cpf.value,
+            "url_image": null
+        })
+        .then((response) => {
+            toast.success('User Created ', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            login(e);
+        })
+        .catch((response) => {
+            toast.error('Invalid Information ', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+        })
+    }
 
     const handleSignUp = (e) => {
         e.preventDefault();
-    }
 
-    const handleTipoPessoa = (e) => {
-        setTipoPessoa(e.value)
+        signUp(e);
     }
-
-    useEffect(() => {
-        
-    }, [tipoPessoa])
 
     return(
         <StyledMain>
             <StyledTitle>
                 Sign Up
             </StyledTitle>
-            {/* <StyledContainer>
-                <Dropdown handleChange={handleTipoPessoa} options={[{value: 1, label: 'Pessoa Física'}, {value: 0, label: 'Pessoa Jurídica'}]} />
-            </StyledContainer> */}
-            {tipoPessoa ? 
-            (
                 <Form method={'post'} onSubmit={handleSignUp}>
-                    <Input name={'name'} label={'Name'} type={'text'} />
-                    <Input name={'cpf'} label={'CPF'} type={'text'} />
-                    <Input name={'birthday'} label={'Birthday'} type={'date'} />
-                    <Input name={'email'} label={'Email'} type={'text'} />
-                    <Input name={'phone'} label={'Phone'} type={'text'} />
-                    <Input name={'password'} label={'Password'} type={'password'} />
+                    <Input name={'firstName'} label={'First Name'} type={'text'} />
+                    <Input name={'lastName'} label={'Last Name'} type={'text'} />
+                    <Input name={'cpf'} label={'CPF'} type={'text'} minLength={11} maxLength={11} />
+                    <Input name={'email'} label={'Email'} type={'email'} />
+                    <Input name={'password'} label={'Password'} type={'password'} minLength={6} />
                     <Button type={'submit'} text={'Sign Up'}/>
                 </Form>
-            )
-            : (
-                <Form method={'post'} onSubmit={handleSignUp}>
-                    <Input name={'name'} label={'Name'} type={'text'} />
-                    <Input name={'cnpj'} label={'CNPJ'} type={'text'} />
-                    <Input name={'birthday'} label={'Birthday'} type={'date'} />
-                    <Input name={'email'} label={'Email'} type={'text'} />
-                    <Input name={'phone'} label={'Phone'} type={'text'} />
-                    <Input name={'password'} label={'Password'} type={'password'} />
-                    <Button type={'submit'} text={'Sign Up'}/>
-                </Form>
-            )}
         </StyledMain>
     )
 }

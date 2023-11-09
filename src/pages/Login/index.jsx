@@ -12,11 +12,15 @@ import { toast } from 'react-toastify';
 import { useAuthStore } from '../../stores/authStore'
 import { useNavigate } from 'react-router-dom';
 
+import { Navigate } from 'react-router-dom'
+
 function Login() {
     const setAccessToken = useAuthStore(state => state.setAccessToken);
     const setRefreshToken = useAuthStore(state => state.setRefreshToken);
 
     const navigate = useNavigate();
+
+    const auth = useAuthStore(state => state.accessToken)
 
     async function login(e) {
             await api.post('api/token/', {
@@ -37,7 +41,7 @@ function Login() {
             })
             .catch((e) => {
                 console.log(e)
-                toast.error('Invalid Credentials ', {
+                toast.error('This user already exists ', {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -58,18 +62,20 @@ function Login() {
     }
 
     return(
-        <StyledMain>
-            <StyledTitle>
-                Sign In
-            </StyledTitle>
-            {(
-                <Form method={'post'} onSubmit={handleLogin}>
-                    <Input name={'email'} label={'Email'} type={'text'} />
-                    <Input name={'password'} label={'Password'} type={'password'} />
-                    <Button type={'submit'} text={'Login'} />
-                </Form>
+        <>
+            {auth ? (<Navigate to="/" />)
+            : (<StyledMain>
+                <StyledTitle>
+                    Sign In
+                </StyledTitle>
+                    <Form method={'post'} onSubmit={handleLogin}>
+                        <Input name={'email'} label={'Email'} type={'email'} />
+                        <Input name={'password'} label={'Password'} type={'password'} minLength={6} />
+                        <Button type={'submit'} text={'Login'} />
+                    </Form>
+                </StyledMain>
             )}
-        </StyledMain>
+        </>
     )
 }
 
