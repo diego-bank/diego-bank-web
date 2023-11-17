@@ -10,6 +10,7 @@ import { useAuthStore } from "../../stores/authStore";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { Navigate } from "react-router-dom";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -115,32 +116,43 @@ function Profile() {
 })
 
   return(
-      <StyledContainer>
-        {loading ? ("Loading...") : ( 
-        <>
-        <StyledBanner>
-            <article>
-                <StyledIcon>
-                    {url_image ? (<StyledImage src={url_image} />) : (<FontAwesomeIcon icon={faUser} size="2xl" />)}
-                </StyledIcon>
-                <StyledTitle>
-                    {first_name} {last_name}
-                </StyledTitle>
+    <>
+        {
+            !accessToken ? (
+                <Navigate to="/" />
+            ) : (
+            <StyledContainer>
+                {loading ? ("Loading...") : ( 
+                <>
+                <StyledBanner>
+                    <article>
+                        <StyledIcon>
+                            {url_image ? (<StyledImage src={url_image} />) : (<FontAwesomeIcon icon={faUser} size="2xl" />)}
+                        </StyledIcon>
+                        <StyledTitle>
+                            {first_name} {last_name}
+                        </StyledTitle>
 
-            </article>
-            <section>
-                <Input label={"Agency"} type={'text'} name={'agency'} value={agency_account} disabled={true} />
-                <Input label={"Account Number"} type={'text'} name={'number_account'} value={number_account} disabled={true} />
-                <Input label={"Balance"} type={'text'} name={'balance'} value={'R$' + balance_account} disabled={true} />
-            </section>
-            <section>
-                <Input label={"Email"} type={'text'} name={'email'} value={email} disabled={true} />
-                <Input label={"CPF"} type={'text'} name={'cpf'} value={cpf} disabled={true} />
-            </section>
-        </StyledBanner>
-        </>
-        )}
-      </StyledContainer>
+                    </article>
+                    <div>
+                    <section>
+                        <Input label={"Agency"} type={'text'} name={'agency'} value={agency_account} disabled={true} />
+                        <Input label={"Account Number"} type={'text'} name={'number_account'} value={number_account} disabled={true} />
+                        <Input label={"Balance"} type={'text'} name={'balance'} value={'R$' + balance_account} disabled={true} />
+                    </section>
+                    <section>
+                        <Input label={"Email"} type={'text'} name={'email'} value={email} disabled={true} />
+                        <Input label={"CPF"} type={'text'} name={'cpf'} value={cpf} disabled={true} />
+                    </section>
+                    </div>
+                    
+                </StyledBanner>
+                </>
+                )}
+            </StyledContainer>
+            )
+        }
+    </>
   )
 }
 

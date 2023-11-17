@@ -11,10 +11,13 @@ import { toast } from 'react-toastify';
 
 import { useAuthStore } from '../../stores/authStore'
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function SignUp() {
     const setAccessToken = useAuthStore(state => state.setAccessToken);
     const setRefreshToken = useAuthStore(state => state.setRefreshToken);
+
+    const auth = useAuthStore(state => state.accessToken)
 
     const navigate = useNavigate();
 
@@ -80,19 +83,27 @@ function SignUp() {
     }
 
     return(
-        <StyledMain>
-            <StyledTitle>
-                Sign Up
-            </StyledTitle>
-                <Form method={'post'} onSubmit={handleSignUp}>
-                    <Input name={'firstName'} label={'First Name'} type={'text'} />
-                    <Input name={'lastName'} label={'Last Name'} type={'text'} />
-                    <Input name={'cpf'} label={'CPF'} type={'text'} minLength={11} maxLength={11} />
-                    <Input name={'email'} label={'Email'} type={'email'} />
-                    <Input name={'password'} label={'Password'} type={'password'} minLength={6} />
-                    <Button type={'submit'} text={'Sign Up'}/>
-                </Form>
-        </StyledMain>
+        <>
+        {
+            auth ? (
+                <Navigate to="/" />
+            ) : (
+                <StyledMain>
+                    <StyledTitle>
+                        Sign Up
+                    </StyledTitle>
+                        <Form method={'post'} onSubmit={handleSignUp}>
+                            <Input name={'firstName'} label={'First Name'} type={'text'} />
+                            <Input name={'lastName'} label={'Last Name'} type={'text'} />
+                            <Input name={'cpf'} label={'CPF'} type={'text'} minLength={11} maxLength={11} />
+                            <Input name={'email'} label={'Email'} type={'email'} />
+                            <Input name={'password'} label={'Password'} type={'password'} minLength={6} />
+                            <Button type={'submit'} text={'Sign Up'}/>
+                        </Form>
+                </StyledMain>
+            )
+        }
+        </>
     )
 }
 

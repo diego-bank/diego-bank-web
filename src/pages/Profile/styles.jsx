@@ -15,7 +15,8 @@ export const StyledBanner = styled.div`
     width: 70vw;
     background-color: #0b0e3b;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+
     article {
         display: flex;
         flex-direction: column;
@@ -27,6 +28,35 @@ export const StyledBanner = styled.div`
         flex-direction: column;
         gap: 20px;
         align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+    div {
+        display: flex;
+        gap: 0px 70px;
+        flex-wrap: wrap;
+    }
+    @media (max-width: 1430px) {
+        grid-template-columns: 1fr 1fr;
+        div {
+            gap: 0px 20px;
+        }
+        section {
+            height: 200px;
+        }
+    }
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        div {
+            justify-content: center;
+            
+        }
+        section {
+            height: 250px;
+        }
+        article {
+            margin-bottom: 15px;
+        }
     }
 `;
 
