@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp'
 import Logout from './pages/Logout'
 import Profile from './pages/Profile'
-import { useAuthStore } from './stores/authStore';
+import Kanye from './pages/Kanye'
 
 function RouterApp() {
     return(
@@ -23,6 +23,7 @@ function RouterApp() {
                     <Route path='/profile' element={ <Profile />} />
                     <Route path='/login' element={ <Login />} />
                     <Route path='/signup' element={ <SignUp />} />
+                    <Route path='/kanye' element={ <Kanye /> } />
 
                     <Route path='*' element={ <Error /> } />
                 </Routes>
