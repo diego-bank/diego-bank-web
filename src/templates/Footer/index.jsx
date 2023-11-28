@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png'
 import appstore from '../../assets/appstore.png'
 import playstore from '../../assets/playstore.png'
 
+// footer do site
 function Footer(){
     return(
         <StyledFooter>

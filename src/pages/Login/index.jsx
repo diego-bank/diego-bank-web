@@ -22,6 +22,7 @@ function Login() {
 
     const auth = useAuthStore(state => state.accessToken)
 
+    // requisição de login na api do banco
     async function login(e) {
             await api.post('api/token/', {
                 'email': e.target.email.value,
@@ -55,6 +56,7 @@ function Login() {
        
     }
 
+    // chama função de login quando acionado botão
     const handleLogin = (e) => {
         e.preventDefault();
 

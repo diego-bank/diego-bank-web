@@ -35,6 +35,7 @@ function Profile() {
 
   useEffect(() => {
 
+    // carrega informações do usuário
     async function userInfo() {
         await api.get('api/v1/user/me/', {
             headers: {
@@ -67,6 +68,7 @@ function Profile() {
         })
     }
 
+    // puxa o id da conta do usuário
     async function accountId() {
         await api.get('api/v1/accounts/', {
             headers: {
@@ -84,6 +86,7 @@ function Profile() {
         })
     }
 
+    // busca informações da conta do usuário
     async function accountInfo(id) {
         await api.get(`api/v1/accounts/${id}/`, {
             headers: {
@@ -115,6 +118,7 @@ function Profile() {
 
 })
 
+    // valida se usuário está logado, caso esteja carrega as informações, senão redireciona
   return(
     <>
         {

@@ -7,6 +7,7 @@ import { apiKanye } from '../../services/kanye'
 function Kanye(){
     const [quote, setQuote] = useState('');
 
+    // requisição na api do kanye west
     async function getKanye() {
         await apiKanye.get()
         .then((response) => {
@@ -14,14 +15,19 @@ function Kanye(){
         })
     }
         
-
+    // requisição realizada no carregamento da página
     useEffect(() => {
         getKanye()
     }, [])
 
     return(
         <StyledKanye>
-            <StyledTitle>Kanye Said: {quote}</StyledTitle>
+            {quote != "" ? (
+                <StyledTitle>Kanye Said: {quote}</StyledTitle>
+            ) : (
+                <></>
+            )}
+            
         </StyledKanye>
     )
 }

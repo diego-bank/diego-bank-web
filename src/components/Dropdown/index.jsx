@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Select from 'react-select';
 
+// componente de dropdown
 const Dropdown = ({options, handleChange}) => {
   const [isClearable, setIsClearable] = useState(true);
   const [isSearchable, setIsSearchable] = useState(false);

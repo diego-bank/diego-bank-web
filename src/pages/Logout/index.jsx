@@ -7,6 +7,7 @@ function Logout() {
     const clearTokens = useAuthStore(state => state.clearTokens);
     const navigate = useNavigate();
 
+    // limpa credenciais de usuário e redireciona
     useEffect(() => {
         
         async function logout() {

@@ -9,7 +9,7 @@ import cell4 from '../../assets/cell4.svg'
 
 import { StyledMain, StyledText } from "./styles";
 
-
+// pagina com informações sobre o projeto
 function About() {
     return(
         <StyledMain>

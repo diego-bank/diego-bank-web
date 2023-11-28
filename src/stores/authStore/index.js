@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+// store para gerenciamento de login
 export const useAuthStore = create(persist((set) => ({
     accessToken: undefined,
     refreshToken: undefined,

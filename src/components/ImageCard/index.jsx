@@ -1,5 +1,6 @@
 import { StyledImage } from "./styles";
 
+// componente de estilização para imagens
 function ImageCard({ img }) {
     return(
         <>

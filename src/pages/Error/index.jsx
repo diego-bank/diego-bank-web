@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyledErro, StyledTitle, StyledLink } from './styles'
 
+// página de erro 404
 function Error(){
     return(
         <StyledErro>

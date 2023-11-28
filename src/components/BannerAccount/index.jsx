@@ -1,6 +1,7 @@
 import Button from "../Button";
 import { StyledBanner, StyledContainer, StyledImage, StyledTitle } from "./styles";
 
+// banner de create tour account
 function BannerAccount({ img }) {
     return(
         <StyledBanner>

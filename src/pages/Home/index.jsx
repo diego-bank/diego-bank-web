@@ -10,6 +10,7 @@ import BannerAccount from "../../components/BannerAccount";
 
 import cell from '../../assets/cell.svg'
 
+// Página home
 function Home() {
     return(
         <StyledContainer>

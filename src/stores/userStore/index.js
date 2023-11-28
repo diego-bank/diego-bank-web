@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// store para gerenciar informações do usuário
 export const useUserStore = create((set) => ({
     id: undefined,
     email: undefined,

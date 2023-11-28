@@ -12,6 +12,7 @@ import Logout from './pages/Logout'
 import Profile from './pages/Profile'
 import Kanye from './pages/Kanye'
 
+// App contendo as rotas do site
 function RouterApp() {
     return(
         <BrowserRouter>

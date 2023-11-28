@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyledInput, StyledLabel, StyledContainer } from "./styles";
 
+// componente de input
 function Input({ type, label, name, onChange, value, maxLength, minLength, disabled=false }) {
     return(
         <StyledContainer>

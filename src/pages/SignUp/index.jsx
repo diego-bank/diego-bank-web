@@ -21,6 +21,7 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    // função de login, para logar após cadastro
     async function login(e) {
         await api.post('api/token/', {
             'email': e.target.email.value,
@@ -40,6 +41,7 @@ function SignUp() {
         })
     }
 
+    // função para realizar cadastro
     async function signUp(e) {
         await api.post('api/v1/user/create/', {
             "email": e.target.email.value,
@@ -76,6 +78,7 @@ function SignUp() {
         })
     }
 
+    // chama sign up ao clicar no botão
     const handleSignUp = (e) => {
         e.preventDefault();
 

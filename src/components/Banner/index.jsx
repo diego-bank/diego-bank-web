@@ -1,6 +1,7 @@
 import Button from "../Button";
 import { StyledContainer, StyledTitle } from "./styles";
 
+// componente de banner para download 
 function Banner() {
     return(
         <StyledContainer>

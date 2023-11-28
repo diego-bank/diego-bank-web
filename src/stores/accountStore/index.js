@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// store para gerenciamento das informações de conta
 export const useAccountStore = create((set) => ({
     id: undefined,
     number: undefined,

@@ -5,6 +5,7 @@ import { useAuthStore } from '../../stores/authStore'
 
 import logo from '../../assets/logo.png'
 
+// estilização do menu mobile
 var styles = {
     bmBurgerButton: {
       position: 'fixed',
@@ -51,7 +52,9 @@ var styles = {
     }
   }
 
+// header do site
 function Header(){
+    // confere se usuário está autenticado
     const auth = useAuthStore(state => state.accessToken);
 
     return(
